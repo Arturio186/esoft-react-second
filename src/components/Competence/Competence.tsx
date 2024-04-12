@@ -2,18 +2,21 @@ import React from "react"
 import './Competence.scss'
 
 import ICompetence from "#interfaces/ICompetence"
+import Button from "#components/UI/Button/Button";
 
 interface ICompetenceProps {
-    competence: ICompetence;
+    competence: ICompetence
+    competences: ICompetence[]
+    setCompetences: React.Dispatch<React.SetStateAction<ICompetence[]>>
 }
 
-const Competence : React.FC<ICompetenceProps> = ({ competence }) => {
+const Competence : React.FC<ICompetenceProps> = ({ competence, competences, setCompetences }) => {
     return (
         <div className="competence">
-            <p>{competence.id}</p>
-            <p>{competence.name}</p>
-            <p>{competence.description}</p>
-            <p>{competence.skill}</p>
+            <p className="title">{competence.name}</p>
+            <p className="description">{competence.description}</p>
+            <p className="">{competence.skill}</p>
+            <Button onClick={() => setCompetences(competences.filter(c => c.id != competence.id))}>Удалить</Button>
         </div>
     )
 }

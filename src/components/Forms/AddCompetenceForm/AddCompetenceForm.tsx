@@ -14,7 +14,7 @@ const AddCompetenceForm : React.FC<IAddCompetenceFormProps> = ({ competences, se
 
     const onSubmit: SubmitHandler<IAddCompetenceFields> = (data) => {
         const newCompetence : ICompetence = { 
-            id: competences[competences.length - 1].id + 1, 
+            id: competences.length !== 0 ? competences[competences.length - 1].id + 1 : 0, 
             name: data.name, 
             description: data.description, 
             skill: data.skill

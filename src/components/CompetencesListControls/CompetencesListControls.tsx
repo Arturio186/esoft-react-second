@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import './CompetencesListControls.scss'
 
 import Button from "#components/UI/Button/Button"
@@ -7,18 +7,24 @@ import ICompetence from "#interfaces/ICompetence"
 import ICompetencesListControlsProps from "#interfaces/props/ICompetencesListControlsProps"
 
 const CompetencesListControls : React.FC<ICompetencesListControlsProps> = (
-    { competences, originalCompetences, setCompetences, isCompetencesVisible,  setIsCompetencesVisible }) => {
+    { competences, setDisplayCompetences, isCompetencesVisible,  setIsCompetencesVisible }) => {
     const [isCompetencesFiltered, setIsCopetencesFiltered] = useState<Boolean>(false)
 
     const ApplyFilter = (filtered: ICompetence[]) => {
-        setCompetences(filtered)
+        setDisplayCompetences(filtered)
         setIsCopetencesFiltered(true)
     }
 
     const RemoveFilter = () => {
-        setCompetences(originalCompetences)
+        setDisplayCompetences(competences)
         setIsCopetencesFiltered(false)
     }
+
+    useEffect(() => {
+        if (isCompetencesFiltered) {
+            setIsCopetencesFiltered(false)
+        }
+    }, [competences])
 
     return (
         <div className="controls">
