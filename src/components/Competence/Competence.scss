@@ -1,0 +1,28 @@
+.competence {
+    width: 30%;
+
+    padding: 15px 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    border: 1px solid #fff;
+
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .description { 
+        font-size: 0.9rem;
+    }
+
+    button {
+        margin-top: 20px;
+        width: 50%;
+    }
+
+    .skill__label {
+        font-size: 0.8rem;
+    }
+}
