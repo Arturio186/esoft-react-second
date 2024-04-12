@@ -4,6 +4,7 @@ import './App.scss'
 import CompetencesList from '#components/CompetencesList/CompetencesList'
 
 import ICompetence from '#interfaces/ICompetence'
+import AddCompetenceForm from '#components/Forms/AddCompetenceForm/AddCompetenceForm'
 
 const App : React.FC = () => {
     const [competences, setCopmetences] = useState<Array<ICompetence>>([
@@ -15,6 +16,7 @@ const App : React.FC = () => {
 
     return (
         <>
+            <AddCompetenceForm />
             <CompetencesList 
                 competences={competences} 
                 setCompetences={setCopmetences}

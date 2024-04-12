@@ -22,20 +22,6 @@ const CompetencesListControls : React.FC<ICompetencesListControlsProps> = (
 
     return (
         <div className="controls">
-            {isCompetencesFiltered && <Button onClick={RemoveFilter}>Убрать фильтр</Button>}
-
-            {!isCompetencesFiltered && 
-                <div className="filter__buttons">
-                    <Button onClick={() => ApplyFilter(competences.filter(competence => competence.skill > 50))}>
-                        Показать компетенции с уровнем изучения {'>'}50%
-                    </Button>
-
-                    <Button onClick={() => ApplyFilter(competences.filter(competence => competence.skill < 50))}>
-                        Показать компетенции с уровнем изучения {'<'}50%
-                    </Button>
-                </div>
-            }
-
             {isCompetencesVisible ? 
                 <Button onClick={() => setIsCompetencesVisible(visible => !visible)}>
                     Убрать компетенции
@@ -44,6 +30,20 @@ const CompetencesListControls : React.FC<ICompetencesListControlsProps> = (
                 <Button onClick={() => setIsCompetencesVisible(visible => !visible)}>
                     Показать компетенции
                 </Button>
+            }
+            
+            {isCompetencesFiltered && <Button onClick={RemoveFilter}>Убрать фильтр</Button>}
+
+            {!isCompetencesFiltered && 
+                <div className="filter__controls">
+                    <Button onClick={() => ApplyFilter(competences.filter(competence => competence.skill > 50))}>
+                        Показать компетенции с уровнем изучения {'>'}50%
+                    </Button>
+
+                    <Button onClick={() => ApplyFilter(competences.filter(competence => competence.skill < 50))}>
+                        Показать компетенции с уровнем изучения {'<'}50%
+                    </Button>
+                </div>
             }
         </div>
     )

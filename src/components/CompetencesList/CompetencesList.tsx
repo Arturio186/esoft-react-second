@@ -17,7 +17,7 @@ const CompetencesList : React.FC<ICompetencesListProps> = ({ competences, setCom
     }, [])
     
     return (
-        <>   
+        <>  
             <CompetencesListControls 
                 competences={competences}
                 setCompetences={setCompetences}
@@ -26,9 +26,13 @@ const CompetencesList : React.FC<ICompetencesListProps> = ({ competences, setCom
                 setIsCompetencesVisible={setIsCompetencesVisible}
             />
 
-            {isCompetencesVisible && competences.map(competence => 
-                <Competence key={competence.id} competence={competence}/>
-            )}
+            <h2>Список компетенций</h2>
+            <div className="competences">
+                {isCompetencesVisible && competences.map(competence => 
+                    <Competence key={competence.id} competence={competence}/>
+                )}
+            </div>
+            
         </>
     )
 }
