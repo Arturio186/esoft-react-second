@@ -6,12 +6,21 @@ import Button from '#components/UI/Button/Button'
 import Input from '#components/UI/Input/Input'
 
 import IAddCompetenceFields from '#interfaces/fields/IAddCompetenceFields'
+import IAddCompetenceFormProps from '#interfaces/props/IAddCompetenceFormProps'
+import ICompetence from '#interfaces/ICompetence'
 
-const AddCompetenceForm : React.FC = () => {
+const AddCompetenceForm : React.FC<IAddCompetenceFormProps> = ({ competences, setCompetences }) => {
     const {register, handleSubmit, formState: { errors }} = useForm<IAddCompetenceFields>({mode: "onChange"});
 
     const onSubmit: SubmitHandler<IAddCompetenceFields> = (data) => {
-        alert('Добавляем!')
+        const newCompetence : ICompetence = { 
+            id: competences[competences.length - 1].id + 1, 
+            name: data.name, 
+            description: data.description, 
+            skill: data.skill
+        }
+
+        setCompetences([...competences, newCompetence])
     }
 
     return (

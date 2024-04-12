@@ -16,7 +16,10 @@ const App : React.FC = () => {
 
     return (
         <>
-            <AddCompetenceForm />
+            <AddCompetenceForm 
+                competences={competences} 
+                setCompetences={setCopmetences}
+            />
             <CompetencesList 
                 competences={competences} 
                 setCompetences={setCopmetences}
