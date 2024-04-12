@@ -1,26 +1,32 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import './CompetencesList.scss'
 
-import Button from "#components/UI/Button/Button"
+import Competence from "#components/Competence/Competence"
+import CompetencesListControls from "#components/CompetencesListControls/CompetencesListControls"
 
+import ICompetence from "#interfaces/ICompetence"
 import ICompetencesListProps from "#interfaces/props/ICopetencesListProps"
-import Competence from "#components/CompetenceCard/Competence"
 
-const CompetencesList : React.FC<ICompetencesListProps> = ({ competences }) => {
-    const [isCompetenceVisible, setIsCompetenceVisible] = useState<Boolean>(false)
+const CompetencesList : React.FC<ICompetencesListProps> = ({ competences, setCompetences }) => {
+    const [isCompetencesVisible, setIsCompetencesVisible] = useState<Boolean>(false)
 
+    const [originalCompetences, setOriginalCompetences] = useState<ICompetence[]>([])
+
+    useEffect(() => {
+        setOriginalCompetences(competences)
+    }, [])
+    
     return (
-        <>
-            {isCompetenceVisible ? 
-                <Button onClick={() => setIsCompetenceVisible(visible => !visible)}>
-                    Убрать компетенции
-                </Button> 
-                : 
-                <Button onClick={() => setIsCompetenceVisible(visible => !visible)}>
-                    Показать компетенции
-                </Button>
-            }
-            {isCompetenceVisible && competences.map(competence => 
+        <>   
+            <CompetencesListControls 
+                competences={competences}
+                setCompetences={setCompetences}
+                originalCompetences={originalCompetences}
+                isCompetencesVisible={isCompetencesVisible}
+                setIsCompetencesVisible={setIsCompetencesVisible}
+            />
+
+            {isCompetencesVisible && competences.map(competence => 
                 <Competence key={competence.id} competence={competence}/>
             )}
         </>

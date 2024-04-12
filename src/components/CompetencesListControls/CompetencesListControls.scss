@@ -1,0 +1,14 @@
+.controls {
+    width: 30%;
+    margin: 0 auto;
+    
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.filter__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
