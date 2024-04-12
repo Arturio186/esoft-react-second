@@ -17,6 +17,7 @@ const Competence : React.FC<ICompetenceProps> = ({ competence, competences, setC
         <div className="competence">
             <p className="title">{competence.name}</p>
             <p className="description">{competence.description}</p>
+            <p className="skill__label">Уровень освоения</p>
             <ProgressBar percentage={competence.skill} />
             <Button onClick={() => setCompetences(competences.filter(c => c.id != competence.id))}>Удалить</Button>
         </div>

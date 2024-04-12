@@ -5,9 +5,9 @@ import './AddCompetenceForm.scss'
 import Button from '#components/UI/Button/Button'
 import Input from '#components/UI/Input/Input'
 
+import ICompetence from '#interfaces/ICompetence'
 import IAddCompetenceFields from '#interfaces/fields/IAddCompetenceFields'
 import IAddCompetenceFormProps from '#interfaces/props/IAddCompetenceFormProps'
-import ICompetence from '#interfaces/ICompetence'
 
 const AddCompetenceForm : React.FC<IAddCompetenceFormProps> = ({ competences, setCompetences }) => {
     const {register, handleSubmit, formState: { errors }} = useForm<IAddCompetenceFields>({mode: "onChange"});
