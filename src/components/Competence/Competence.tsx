@@ -1,8 +1,10 @@
 import React from "react"
 import './Competence.scss'
 
-import ICompetence from "#interfaces/ICompetence"
 import Button from "#components/UI/Button/Button";
+import ProgressBar from "#components/UI/ProgressBar/ProgressBar";
+
+import ICompetence from "#interfaces/ICompetence"
 
 interface ICompetenceProps {
     competence: ICompetence
@@ -15,7 +17,7 @@ const Competence : React.FC<ICompetenceProps> = ({ competence, competences, setC
         <div className="competence">
             <p className="title">{competence.name}</p>
             <p className="description">{competence.description}</p>
-            <p className="">{competence.skill}</p>
+            <ProgressBar percentage={competence.skill} />
             <Button onClick={() => setCompetences(competences.filter(c => c.id != competence.id))}>Удалить</Button>
         </div>
     )
